@@ -1,7 +1,0 @@
-"Customization"
-colorscheme spacedust
-set tabstop=2
-filetype plugin indent on
-syntax on
-set guicursor= ""
-set shiftwidth=2
