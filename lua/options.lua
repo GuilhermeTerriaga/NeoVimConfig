@@ -7,7 +7,8 @@ vim.cmd("set number")
 vim.g.mapleader = " "
 vim.cmd("set cursorline")
 vim.cmd("set nowrap")
-
+vim.cmd("set listchars=eol:⏎,tab:>-,trail:·,extends:>,precedes:<,space:.")
+vim.cmd("set list")
 local map = vim.api.nvim_set_keymap
 -- Barbar configs que eu não consegui botar no arquivo certo pois sou noob ou muito maluco
 -- Move to previous/next
