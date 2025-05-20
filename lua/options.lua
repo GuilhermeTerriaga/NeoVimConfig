@@ -5,6 +5,8 @@ vim.cmd('set guicursor="" ')
 vim.cmd("syntax on")
 vim.cmd("set number")
 vim.g.mapleader = " "
+vim.cmd("set cursorline")
+vim.cmd("set nowrap")
 
 local map = vim.api.nvim_set_keymap
 -- Barbar configs que eu não consegui botar no arquivo certo pois sou noob ou muito maluco
