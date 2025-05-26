@@ -60,4 +60,4 @@ map("n", "<leader>qq", "<cmd>qa<cr>", { desc = "Quit All" })
 map("n", "<leader>l", "<cmd>Lazy<cr>", { desc = "Lazy" })
 
 -- save file
-map( {"n", "v", "s", "x"}, "<C-s>", "<Cmd>w<CR><Esc>", { desc = "Save File" })
+map({ "n", "v", "s", "x", "i" }, "<C-s>", "<Cmd>w<CR><Esc>", { desc = "Save File" })
