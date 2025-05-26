@@ -9,7 +9,7 @@ vim.cmd("set cursorline")
 vim.cmd("set nowrap")
 vim.cmd("set listchars=eol:⏎,tab:>-,trail:·,extends:>,precedes:<,space:.")
 vim.cmd("set list")
-local map = vim.api.nvim_set_keymap
+local map = vim.keymap.set
 -- Barbar configs que eu não consegui botar no arquivo certo pois sou noob ou muito maluco
 -- Move to previous/next
 map("n", "<A-,>", "<Cmd>BufferPrevious<CR>", {})
@@ -52,3 +52,12 @@ map("n", "<leader>bc", "<Cmd>BufferClose<CR>", {})
 -- Other:
 -- :BarbarEnable - enables barbar (enabled by default)
 -- :BarbarDisable - very bad command, should never be used
+
+-- quit
+map("n", "<leader>qq", "<cmd>qa<cr>", { desc = "Quit All" })
+
+--lazy
+map("n", "<leader>l", "<cmd>Lazy<cr>", { desc = "Lazy" })
+
+-- save file
+map( {"n", "v", "s", "x"}, "<C-s>", "<Cmd>w<CR><Esc>", { desc = "Save File" })
