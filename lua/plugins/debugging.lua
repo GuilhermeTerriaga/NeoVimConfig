@@ -5,14 +5,16 @@ return {
 		"nvim-neotest/nvim-nio",
 		"leoluz/nvim-dap-go",
 		"jay-babu/mason-nvim-dap.nvim",
+		"mfussenegger/nvim-dap-python",
 	},
 	config = function()
 		local dap, dapui = require("dap"), require("dapui")
 		-- setups
 		require("dap-go").setup()
 		require("dapui").setup()
+		require("dap-python").setup("python3")
 		require("mason-nvim-dap").setup({
-			ensure_installed = { "python", "js" },
+			ensure_installed = { "python" },
 			handlers = {},
 			automatic_installation = {
 				-- These will be configured by separate plugins.
