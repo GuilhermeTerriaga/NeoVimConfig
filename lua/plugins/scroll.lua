@@ -11,8 +11,6 @@ return {
 				basic = true,
 				extra = true,
 			},
-			-- Only scroll the window
-			options = { mode = "window" },
 		})
 	end,
 }
