@@ -64,6 +64,7 @@ map("n", "<C-h>", "<C-w>h", { desc = "Go to Left Window", remap = true })
 map("n", "<C-j>", "<C-w>j", { desc = "Go to Lower Window", remap = true })
 map("n", "<C-k>", "<C-w>k", { desc = "Go to Upper Window", remap = true })
 map("n", "<C-l>", "<C-w>l", { desc = "Go to Right Window", remap = true })
+
 -- save file
 map({ "n", "v", "s", "x", "i" }, "<C-s>", "<Cmd>w<CR><Esc>", { desc = "Save File" })
 
@@ -109,3 +110,12 @@ map("n", "<leader>slp", function()
 	vim.cmd("set spelllang=pt_br")
 	vim.cmd("echo 'Spell language set to Portuguese'")
 end, { desc = "Set language to Portuguese" })
+map("n", "<leader>ot", function()
+	vim.cmd.vnew()
+	vim.cmd.term()
+	vim.cmd.wincmd("J")
+	vim.api.nvim_win_set_height(0, 8)
+end, { desc = "Open terminal" })
+
+map({ "n", "x" }, "cp", '"+y', { desc = "Copy to system clipboard" })
+map({ "n", "x" }, "cv", '"+p', { desc = "Paste from system clipboard" })

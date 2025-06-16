@@ -13,5 +13,14 @@ return {
 
 	init = function()
 		vim.g.barbar_auto_setup = false
+		local wk = require("which-key")
+		wk.add({
+			{
+				"<leader>b",
+				group = "📄 Buffers",
+				nowait = true,
+				remap = false,
+			},
+		})
 	end,
 }
