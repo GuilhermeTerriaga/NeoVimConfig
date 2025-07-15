@@ -37,7 +37,7 @@ return {
 		-- end
 		vim.keymap.set("n", "<Leader>dc", dap.continue, { desc = "Debug Continue" })
 		vim.keymap.set("n", "<Leader>dt", dap.toggle_breakpoint, { desc = "Toggle Breakpoint" })
-		vim.keymap.set("n", "<Leader>de", dap.close, { desc = "Dap Close" })
+		vim.keymap.set("n", "<Leader>de", require("dapui").close, { desc = "Dap Close" })
 		vim.keymap.set("n", "<F5>", require("dap").continue)
 		vim.keymap.set("n", "<F10>", require("dap").step_over)
 		vim.keymap.set("n", "<F11>", require("dap").step_into)
