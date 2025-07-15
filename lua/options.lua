@@ -84,11 +84,11 @@ map("v", "<A-k>", ":<C-u>execute \"'<,'>move '<-\" . (v:count1 + 1)<cr>gv=gv", {
 
 -- diagnostic
 local diagnostic_goto = function(next, severity)
-	local go = next and vim.diagnostic.goto_next or vim.diagnostic.goto_prev
-	severity = severity and vim.diagnostic.severity[severity] or nil
-	return function()
-		go({ severity = severity })
-	end
+  local go = next and vim.diagnostic.goto_next or vim.diagnostic.goto_prev
+  severity = severity and vim.diagnostic.severity[severity] or nil
+  return function()
+    go({ severity = severity })
+  end
 end
 map("n", "<leader>cd", vim.diagnostic.open_float, { desc = "Line Diagnostics" })
 map("n", "]d", diagnostic_goto(true), { desc = "Next Diagnostic" })
@@ -100,22 +100,24 @@ map("n", "[w", diagnostic_goto(false, "WARN"), { desc = "Prev Warning" })
 
 -- spell
 map("n", "<leader>sle", function()
-	vim.cmd("set spell")
-	vim.cmd("set spelllang=en")
-	vim.cmd("echo 'Spell language set to English'")
+  vim.cmd("set spell")
+  vim.cmd("set spelllang=en")
+  vim.cmd("echo 'Spell language set to English'")
 end, { desc = "Set language to English" })
 
 map("n", "<leader>slp", function()
-	vim.cmd("set spell")
-	vim.cmd("set spelllang=pt_br")
-	vim.cmd("echo 'Spell language set to Portuguese'")
+  vim.cmd("set spell")
+  vim.cmd("set spelllang=pt_br")
+  vim.cmd("echo 'Spell language set to Portuguese'")
 end, { desc = "Set language to Portuguese" })
 map("n", "<leader>ot", function()
-	vim.cmd.vnew()
-	vim.cmd.term()
-	vim.cmd.wincmd("J")
-	vim.api.nvim_win_set_height(0, 8)
+  vim.cmd.vnew()
+  vim.cmd.term()
+  vim.cmd.wincmd("J")
+  vim.api.nvim_win_set_height(0, 8)
 end, { desc = "Open terminal" })
 
 map({ "n", "x" }, "cp", '"+y', { desc = "Copy to system clipboard" })
 map({ "n", "x" }, "cv", '"+p', { desc = "Paste from system clipboard" })
+
+map({ "i", "n" }, "<esc>", "<cmd>noh<cr><esc>")
