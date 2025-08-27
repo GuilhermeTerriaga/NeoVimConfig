@@ -37,6 +37,12 @@ return {
         -- and will be called for each installed server that doesn't have
         -- a dedicated handler.
         function(server_name) -- default handler (optional)
+          lspconfig.ruff.setup({
+            capabilities = capabilities,
+            init_options = {
+              settings = {},
+            },
+          })
           lspconfig[server_name].setup({
             capabilities = capabilities,
           })

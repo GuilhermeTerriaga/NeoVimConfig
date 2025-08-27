@@ -23,8 +23,8 @@ return {
         require("none-ls.diagnostics.eslint_d"),
         null_ls.builtins.formatting.stylua,
         null_ls.builtins.formatting.prettier,
-        null_ls.builtins.formatting.ruff,
-        null_ls.builtins.diagnostics.ruff,
+        null_ls.builtins.formatting.black,
+        null_ls.builtins.diagnostics.mypy,
       },
     })
     vim.keymap.set("n", "<leader>gf", vim.lsp.buf.format, { desc = "Format" })
