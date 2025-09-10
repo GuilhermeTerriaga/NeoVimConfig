@@ -1,6 +1,6 @@
 local lsps = {
   "lua_ls",
-  "elixirls",
+  "expert",
   "flux_lsp",
   "marksman",
   "jedi_language_server",
