@@ -121,3 +121,9 @@ map({ "n", "x" }, "cp", '"+y', { desc = "Copy to system clipboard" })
 map({ "n", "x" }, "cv", '"+p', { desc = "Paste from system clipboard" })
 
 map({ "i", "n" }, "<esc>", "<cmd>noh<cr><esc>")
+local md_gp = vim.api.nvim_create_augroup("Markdown Wrap Settings", { clear = true })
+vim.api.nvim_create_autocmd('BufEnter', {
+  pattern = {'*.md'},
+  group = md_gp,
+  command = 'setlocal wrap'
+})
