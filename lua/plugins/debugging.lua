@@ -20,6 +20,7 @@ return {
 				-- These will be configured by separate plugins.
 				exclude = {
 					"delve",
+                                        "python"
 				},
 			},
 		})
