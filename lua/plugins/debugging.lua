@@ -12,15 +12,28 @@ return {
 		-- setups
 		require("dap-go").setup()
 		require("dapui").setup()
-		require("dap-python").setup("python3")
+		require("dap-python").setup("debugpy-adapter") -- or uv, or path to python, see #usage
+		table.insert(require("dap").configurations.python, {
+			justMyCode = false,
+			type = "python",
+			request = "launch",
+			name = "launch file",
+			program = "${file}",
+			pythonPath = function()
+				local venv_path = os.getenv("VIRTUAL_ENV")
+				if venv_path then
+					return venv_path .. "/bin/python"
+				end
+				return "/usr/bin/python3"
+			end,
+		})
 		require("mason-nvim-dap").setup({
-			ensure_installed = { "python" },
 			handlers = {},
 			automatic_installation = {
 				-- These will be configured by separate plugins.
 				exclude = {
 					"delve",
-                                        "python"
+					"python",
 				},
 			},
 		})
