@@ -17,7 +17,7 @@ return {
 			justMyCode = false,
 			type = "python",
 			request = "launch",
-			name = "launch file",
+			name = "debug file",
 			program = "${file}",
 			pythonPath = function()
 				local venv_path = os.getenv("VIRTUAL_ENV")
