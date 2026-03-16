@@ -1,39 +1,20 @@
-# Project Description
+# Neovim config
 
-A brief description of what this project does and its purpose.
+My neovim config!
 
 # Installation
 
-Instructions on how to install the project.
+Just clone the repo and place it on .config/nvim/
 
-## Requirements
-- List any requirements here.
+# Plugins
 
-## Steps
-1. Step 1
-2. Step 2
-
-# Features
-
-- Feature 1
-- Feature 2
-- Feature 3
-
-# Structure
-
-- Brief overview of the project structure here.
-
-# Keybindings
-
-```plaintext
-// Placeholder for keybindings
-```
-
-# Troubleshooting
-
-Common issues and solutions:
-- Issue 1: Description of the issue and how to resolve it.
-- Issue 2: Description of the issue and how to resolve it.
+- Ayu colorscheme
+- barbar as buffer bar
+- Smart completions with cmp-nvim-lsp, nvim-autopairs, luaSnip and nvim-cmp
+- CsvView to handle CSVs
+- Nvim DAP to debug
+- Git-conflict to handle git conflicts
+- 
 
 # License
 
