@@ -1,17 +1,16 @@
 local lsps = {
   "lua_ls",
-  -- "expert",
-  "flux_lsp",
   "marksman",
   "jedi_language_server",
   "jdtls",
+  "stylua",
   "gopls",
   "eslint",
   "ruff",
   "ts_ls",
 }
-return {
 
+return {
   {
     "williamboman/mason.nvim",
     config = function()
@@ -20,41 +19,50 @@ return {
   },
   {
     "williamboman/mason-lspconfig.nvim",
-    config = function()
-      require("mason-lspconfig").setup({
-        ensure_installed = lsps,
-        automatic_enable = true,
-      })
-    end,
-  },
-  {
-    "neovim/nvim-lspconfig",
+    dependencies = {
+      "neovim/nvim-lspconfig",
+      "hrsh7th/cmp-nvim-lsp", },
     config = function()
       local capabilities = require("cmp_nvim_lsp").default_capabilities()
       local lspconfig = require("lspconfig")
+
       require("mason-lspconfig").setup({
-        -- The first entry (without a key) will be the default handler
-        -- and will be called for each installed server that doesn't have
-        -- a dedicated handler.
-        function(server_name) -- default handler (optional)
-          lspconfig.ruff.setup({
-            capabilities = capabilities,
-            init_options = {
-              settings = {},
-            },
-          })
-          lspconfig[server_name].setup({
-            capabilities = capabilities,
-          })
-        end,
-        -- Next, you can provide a dedicated handler for specific servers.
-        -- For example, a handler override for the `rust_analyzer`:
+        ensure_installed = lsps,
+        handlers = {
+          -- Default handler: every server not listed below
+          function(server_name)
+            lspconfig[server_name].setup({
+              capabilities = capabilities,
+            })
+          end,
+
+          -- Ruff precisa de init_options específicos
+          ["ruff"] = function()
+            lspconfig.ruff.setup({
+              capabilities = capabilities,
+              init_options = {
+                settings = {},
+              },
+            })
+          end,
+
+          -- jdtls normalmente exige config extra (como o lombok)
+          ["jdtls"] = function()
+            lspconfig.jdtls.setup({
+              capabilities = capabilities,
+              -- Adicione aqui cmd, root_dir, etc. se necessário
+            })
+          end,
+        },
       })
-      vim.keymap.set("n", "K", vim.lsp.buf.hover, { desc = "Lsp hover" })
+
+      -- Keymaps globais (funcionam para qualquer buffer com LSP ativo)
+      vim.keymap.set("n", "K", vim.lsp.buf.hover, { desc = "LSP hover" })
       vim.keymap.set("n", "gd", vim.lsp.buf.definition, { desc = "Go to definition" })
       vim.keymap.set("n", "gD", vim.lsp.buf.declaration, { desc = "Go to declaration" })
       vim.keymap.set("n", "<leader>gr", vim.lsp.buf.references, { desc = "Go to references" })
       vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, { desc = "Code actions" })
+      vim.keymap.set("n", "<leader>f", vim.lsp.buf.format, { desc = "Format buffer" })
     end,
   },
 }
