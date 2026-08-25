@@ -7,6 +7,7 @@ return {
 		"nvim-neotest/neotest-python",
 		"jfpedroza/neotest-elixir",
 		"marilari88/neotest-jest",
+		"nvim-neotest/neotest-go",
 	},
 	config = function()
 		require("neotest").setup({
@@ -14,6 +15,7 @@ return {
 				require("neotest-python"),
 				require("neotest-elixir"),
 				require("neotest-jest"),
+				require("neotest-go"),
 			},
 		})
 		local wk = require("which-key")
